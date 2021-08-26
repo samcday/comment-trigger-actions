@@ -1,0 +1,13 @@
+name: Manually dispatched workflow
+on: workflow_dispatch
+concurrency: ${{ github.ref }}
+env:
+  SUPERSECRET: ${{ secrets.SUPERSECRET }}
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        if [[ "${SUPERSECRET}" == "hunter2" ]]; then
+          echo Success
+        fi
